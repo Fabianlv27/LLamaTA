@@ -33,7 +33,7 @@ class App(tk.Tk):
         )
 
         # Configuración de Canvas y Scrollbar
-        self.canvas = tk.Canvas(self, bg="black", borderwidth=50, highlightthickness=0)
+        self.canvas = tk.Canvas(self, bg="black", borderwidth=0, highlightthickness=0)
         self.scrollbar = ttk.Scrollbar(self.canvas, orient="vertical", command=self.canvas.yview)
         self.scrollable_frame = tk.Frame(self.canvas, bg="black")
 
@@ -48,9 +48,6 @@ class App(tk.Tk):
         self.canvas.pack(side="left", fill="both", expand=True)
         self.scrollbar.pack(side="right", fill="y")
 
-        # Configurar expansión para scrollable_frame
-        self.scrollable_frame.grid_rowconfigure(0, weight=1)
-        self.scrollable_frame.grid_columnconfigure(0, weight=1)
 
         # Diccionario para almacenar las páginas
         self.frames = {}

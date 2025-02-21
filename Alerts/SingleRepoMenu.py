@@ -15,6 +15,15 @@ def SingleRepoMenu(parent, RepoElement, UserData, Belong, Directory,Refresh):
     NewWindow.title(RepoElement["Name"])
     NewWindow.geometry("400x480")
     NewWindow.configure(bg="black")
+    #Scroll configure
+    canvas = tk.Canvas(NewWindow, bg="black",borderwidth=0,highlightthickness=0)
+    scrollbar = ttk.Scrollbar(NewWindow, orient="vertical", command=canvas.yview)
+    scrollable_frame = tk.Frame(canvas, bg="black")
+    scrollable_frame.bind("<Configure>",lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+    canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+    
+    canvas.pack(side="left", fill="both", expand=True)
+    scrollbar.pack(side="right", fill="y")
    # print(Directory.replace("/","\\\\"))
     # Obtener información del usuario
     UserData = GetUserInfo()
@@ -29,11 +38,11 @@ def SingleRepoMenu(parent, RepoElement, UserData, Belong, Directory,Refresh):
     IADel = tk.PhotoImage(file="Media/AllDelete.png").subsample(2, 2)
 
     # Etiqueta con el nombre del repositorio
-    label = ttk.Label(NewWindow, text=RepoElement["Name"], wraplength=280, background="black", foreground="white")
+    label = ttk.Label(scrollable_frame, text=RepoElement["Name"], wraplength=280, background="black", foreground="white")
     label.pack(pady=2)
 
     # Contenedor de botones
-    button_frame = tk.Frame(NewWindow, bg="black")
+    button_frame = tk.Frame(scrollable_frame, bg="black")
     button_frame.pack(pady=10)
 
     # Botón de actualizar
@@ -84,9 +93,9 @@ def SingleRepoMenu(parent, RepoElement, UserData, Belong, Directory,Refresh):
     ILinux=tk.PhotoImage(file="Media/OS/Linux.png").subsample(2,2)
     IMac=tk.PhotoImage(file="Media/OS/Mac.png").subsample(2,2)
     
-    ttk.Label(NewWindow,text="Dengerous Zone",wraplength=280,background="black",foreground="red").pack(padx=1)
+    ttk.Label(scrollable_frame,text="Dengerous Zone",wraplength=280,background="black",foreground="red").pack(padx=1)
 
-    Row1=tk.Frame(NewWindow,bg="black")
+    Row1=tk.Frame(scrollable_frame,bg="black")
     Row1.pack(anchor="w",padx=10,fill="x")
     
     Del=ttk.Button(
@@ -99,7 +108,7 @@ def SingleRepoMenu(parent, RepoElement, UserData, Belong, Directory,Refresh):
     
     ttk.Label(Row1,text="Delete from the device",wraplength=280,font=("Arial",10),background="black",foreground="red").pack(side="left")
     
-    Row2=tk.Frame(NewWindow,bg="black")
+    Row2=tk.Frame(scrollable_frame,bg="black")
     Row2.pack(anchor="w",padx=10,fill="x")
     
     ADel=ttk.Button(
@@ -112,7 +121,7 @@ def SingleRepoMenu(parent, RepoElement, UserData, Belong, Directory,Refresh):
     
     ttk.Label(Row2,text="Delete from the server",wraplength=280,font=("Arial",10),background="black",foreground="red").pack(side="left")
     
-    ttk.Label(NewWindow,text="Directories", wraplength=250, background="black", foreground="white").pack(padx=1)
+    ttk.Label(scrollable_frame,text="Directories", wraplength=250, background="black", foreground="white").pack(padx=1)
     
     for i,direc in enumerate(RepoElement.get("Directories",[])) :
         OsData=direc['IDMachine'].split('%%@_')[1].split("/")
@@ -125,7 +134,7 @@ def SingleRepoMenu(parent, RepoElement, UserData, Belong, Directory,Refresh):
         else:
             Os=IMac
             
-        frame=tk.Frame(NewWindow,bg="black")
+        frame=tk.Frame(scrollable_frame,bg="black")
         frame.pack(anchor="w", padx=20, pady=2, fill="x")
         
         img_label = ttk.Label(frame, image=Os, background="black")

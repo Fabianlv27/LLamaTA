@@ -13,10 +13,11 @@ class ReposMenu(tk.Frame):
         self.Element=Element
         self.Belong=self.isHere(self.Data["Repos"][Element],self.UserData)
         self.Directory=self.GetDirectory(Element)
-        print(self.Belong)
+        print(self.Belong)   
         
         buttonContainer=tk.Frame(self)
         buttonContainer.pack(anchor="w",pady=0,padx=2)
+        
         User=ttk.Label(buttonContainer,text=self.Data["Repos"][Element]["Name"],font=("Arial",12),foreground="#00BFFF" if self.Belong else "grey",cursor="hand2")
         User.pack(side="left",padx=0)
         User.bind("<Button-1>",lambda event:SingleRepoMenu(self,self.Data["Repos"][self.Element],self.UserData,self.Belong,self.Directory,self.controller.Refresh))

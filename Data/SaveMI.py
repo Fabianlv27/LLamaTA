@@ -14,6 +14,7 @@ def SaveMI(Id):
         
 def MIExist():
     AppDataDir=os.path.join(os.getenv("APPDATA"),"LLamaTA")
+    print(AppDataDir)
     if not os.path.exists(AppDataDir):
         return {"status":False,"message":"No such a AppDataDir"}
     FilePath=os.path.join(AppDataDir,"MachineId.json")
