@@ -1,6 +1,94 @@
 {
-    "Amount": 0,
+    "Amount": 7,
     "Repos": [
-   
+        {
+            "Id": "245d9c40-474e-405d-939f-2d6f507773ac",
+            "Name": "css5",
+            "Link": "https://github.com/Fabianlv27/css5.git",
+            "Directories": [
+                {
+                    "IDMachine": "975c9a84-3af0-44f2-8d12-da9e913d6542%%@_Windows/lunavic",
+                    "Directory": "C:/Users/endga/OneDrive/Escritorio/FABIAN/Metrodora/css5"
+                }
+            ]
+        },
+        {
+            "Id": "a281c473-fbba-49f8-b682-0a8e76f51669",
+            "Name": "english",
+            "Link": "https://github.com/Fabianlv27/english.git",
+            "Directories": [
+                {
+                    "IDMachine": "e4b21d3f-edef-4eac-a219-5b899cde84b4%%@_Windows/lunavic",
+                    "Directory": "C:/Users/endga/OneDrive/Escritorio/FABIAN/english/english"
+                }
+            ]
+        },
+        {
+            "Id": "8f642bc6-88a4-4e58-9804-7875cb21df93",
+            "Name": "BuscarPdf",
+            "Link": "https://github.com/Fabianlv27/BuscarPdf.git",
+            "Directories": [
+                {
+                    "IDMachine": "e4b21d3f-edef-4eac-a219-5b899cde84b4%%@_Windows/lunavic",
+                    "Directory": "C:/Users/endga/OneDrive/Escritorio/FABIAN/BuscarPdf"
+                },
+                {
+                    "IDMachine": "05b89fdb-9dcd-488f-abe2-f2e0b7ef4a30%%@_Windows/DESKTOP-Q5TD40F",
+                    "Directory": "C:/Users/CEEP/Desktop/trabajos/BuscarPdf"
+                }
+            ]
+        },
+        {
+            "Id": "8f642bc6-88a4-4e58-9804-7875cb21df22",
+            "Name": "Java",
+            "Link": "https://github.com/Fabianlv27/Java.git",
+            "Directories": [
+                {
+                    "IDMachine": "e4b21d3f-edef-4eac-a219-5b899cde84b4%%@_Windows/lunavic",
+                    "Directory": "C:/Users/endga/OneDrive/Escritorio/FABIAN/Metrodora/programacion/Java"
+                }
+            ]
+        },
+        {
+            "Id": "38478c3a-9866-4dd6-a4b4-dc648db66e17",
+            "Name": "PrimerProyecto",
+            "Link": "https://github.com/Fabianlv27/PrimerProyecto.git",
+            "Directories": [
+                {
+                    "IDMachine": "e4b21d3f-edef-4eac-a219-5b899cde84b4%%@_Windows/lunavic",
+                    "Directory": "C:/Users/endga/OneDrive/Escritorio/TestProyecto/PrimerProyecto"
+                },
+                {
+                    "IDMachine": "05b89fdb-9dcd-488f-abe2-f2e0b7ef4a30%%@_Windows/DESKTOP-Q5TD40F",
+                    "Directory": "C:/Users/CEEP/Desktop/PrimerProyecto"
+                }
+            ]
+        },
+        {
+            "Id": "963d5615-a4e5-4e7b-b47e-ac93d97c2238",
+            "Name": "TestProyecto",
+            "Link": "https://github.com/Fabianlv27/TestProyecto.git",
+            "Directories": [
+                {
+                    "IDMachine": "05b89fdb-9dcd-488f-abe2-f2e0b7ef4a30%%@_Windows/DESKTOP-Q5TD40F",
+                    "Directory": "C:/Users/CEEP/Desktop/TestProyecto"
+                }
+            ]
+        },
+        {
+            "Id": "eac1e3af-de63-495d-a18a-7059f5a21807",
+            "Name": "xml",
+            "Link": "https://github.com/Fabianlv27/xml.git",
+            "Directories": [
+                {
+                    "IDMachine": "05b89fdb-9dcd-488f-abe2-f2e0b7ef4a30%%@_Windows/DESKTOP-Q5TD40F",
+                    "Directory": "C:/Users/CEEP/Desktop/trabajos/Lenguaje de Marcas/xml"
+                },
+                {
+                    "IDMachine": "e4b21d3f-edef-4eac-a219-5b899cde84b4%%@_Windows/lunavic",
+                    "Directory": "C:/Users/endga/OneDrive/Escritorio/xml"
+                }
+            ]
+        }
     ]
 }
