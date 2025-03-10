@@ -58,7 +58,7 @@ def SingleRepoMenu(parent, RepoElement, UserData, Belong, Directory,Refresh):
     Save = ttk.Button(
         button_frame,
         image=ISa,
-        command=lambda: SaveChanges(Directory, UserData["UserEmail"])
+        command=lambda: SaveChanges(Directory, UserData["UserEmail"], False)
     )
     Save.image = ISa
     Save.pack(side="left", padx=5) 
@@ -114,7 +114,7 @@ def SingleRepoMenu(parent, RepoElement, UserData, Belong, Directory,Refresh):
     ADel=ttk.Button(
         Row2,
         image=IADel,
-        command=lambda:DeleteRepo(RepoElement["Id"],UserData["Token"],UserData["UserName"],Refresh,NewWindow.destroy)
+        command=lambda:DeleteRepo(RepoElement["Id"],UserData["Token"],UserData["UserName"],Refresh,NewWindow.destroy,Directory)
     )
     ADel.image=IADel
     ADel.pack(side="left")

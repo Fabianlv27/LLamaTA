@@ -9,7 +9,6 @@ include_files = [
     ('Media/', 'Media/'),  # Incluye una carpeta completa
     ('Pages/', 'Pages/'),  # Incluye una carpeta completa
     ('Functions/', 'Functions/'),
-    ('Data/keyfile.key', 'keyfile.key'),# Incluye una carpeta completa
     ('DataTokenHandler.py/', 'DataTokenHandler.py/'),  # Incluye una carpeta completa
     ('Llama.ico', 'Llama.ico/')  # Incluye una carpeta completa
 ]
@@ -19,14 +18,14 @@ executables = [
     Executable(
         script="Main.py",  # Archivo principal de tu proyecto
         base="Win32GUI",   # Usa "Win32GUI" para aplicaciones sin consola o "Console" para mantener la consola
-        target_name="TeleArchiver.exe",  # Nombre del ejecutable
+        target_name="LLamaTA.exe",  # Nombre del ejecutable
         icon="Llama.ico"
     )
 ]
 
 # Configuración del proyecto
 setup(
-    name="TeleArchiver",
+    name="LLamaTA",
     version="1.0",
     description="Easier way to transfer files using github",
     options={

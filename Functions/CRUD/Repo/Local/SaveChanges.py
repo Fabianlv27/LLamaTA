@@ -1,7 +1,7 @@
 import subprocess
 from Alerts.AlertBox import Show_popup
 
-def SaveChanges(Directory,Email):
+def SaveChanges(Directory,Email,first):
     Directory=Directory.replace("\\","/")
     
     #Git add
@@ -23,22 +23,26 @@ def SaveChanges(Directory,Email):
         return
     
     ModifiedFile=StatusResult["output"].splitlines()
+    print(ModifiedFile)
     if not ModifiedFile:
         Show_popup("No Changes to commit")
         return
     
-    PullResult=RunCommand(["git","pull","origin","main"])
-    if not PullResult["status"]:
-        Show_popup(PullResult["message"])
-        return
-    
+    if not first:
+        PullResult=RunCommand(["git","pull","origin","main"])
+        if not PullResult["status"]:
+            Show_popup(PullResult["message"])
+            return
+    print('resultado:')
     AddResult=RunCommand(["git","add","."])
+    print(AddResult)
     if not AddResult["status"]:
         Show_popup(AddResult["message"])
         return
     
     fileList=[line[:3] for line in ModifiedFile]
-    CommitResult=RunCommand(["git","commit","-m",f"Updated-Changes: {', '.join(fileList)}" ])
+    print(fileList)
+    CommitResult=RunCommand(["git","commit","-m",f"Updated-Changes: {', '.join(fileList) if not first else 'First commit'}" ])
     if not CommitResult["status"]:
         Show_popup(CommitResult["message"])
         return

@@ -10,6 +10,7 @@ from Data.GetUserData import GetUserInfo
 from Functions.CRUD.Repo.Local.InitLocalRepo import InitLocalRepo
 from Functions.CRUD.ReposDataFile.UpdateLReposData import UpdateLReposData
 from Functions.CRUD.ReposDataFile.UpdateRReposData import UpdateRReposData
+from Functions.CRUD.Repo.Local.SaveChanges import SaveChanges
 
 class CreatorMenu(tk.Frame):
     def __init__(self,parent,controller):
@@ -60,7 +61,9 @@ class CreatorMenu(tk.Frame):
                if InitLocalRepoRes["status"]:
                    UpdateLReposDataResp=UpdateLReposData(DName,CreateRepoData["link"],Directory,GetUserInfo()["CodeMachineId"],"NoId")
                    print("Uploading")
-                   UpdateRReposData(UpdateLReposDataResp["content"],GetUserInfo()["ReposDataLink"])     
+                   UpdateRReposDataResp=UpdateRReposData(UpdateLReposDataResp["content"],GetUserInfo()["ReposDataLink"]) 
+                   if UpdateLReposDataResp and UpdateRReposDataResp:
+                       SaveChanges(Directory,GetUserInfo()["UserEmail"],True) 
                    controller.Refresh()         
             else:
                 Show_popup(CreateRepoData["message"])

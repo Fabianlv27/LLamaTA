@@ -33,8 +33,6 @@ def CreateNewReposData(EncryToken):
     repo=response.json()["name"]
     file_path="ReposInfo.json"
     link=f"https://api.github.com/repos/{owner}/{repo}/contents/{file_path}"
-    print(38)
-    print([])
     upload_response=UpdateRReposData([],link)
     return upload_response
 

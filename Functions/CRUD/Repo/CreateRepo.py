@@ -18,7 +18,7 @@ def CreateRepo(Name,Desc):
         "name":Name,
         "description":f"TeleArchiver: {Desc}",
         "private":True,
-        "auto_init":True,
+        
     }
     
     response=requests.post(Github_Api_Url,headers=Headers,json=RepoData)
