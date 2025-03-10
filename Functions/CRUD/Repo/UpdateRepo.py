@@ -2,10 +2,19 @@ import subprocess
 import tkinter as tk
 from tkinter import messagebox
 
+from Alerts.AlertBox import Show_popup
+
 def UpdateRepo(Directory):
     Directory = Directory.replace("\\", "/")
-    
     try:
+        Show_popup("Commiting your changes")
+        subprocess.run(["git", "add", "."], cwd=Directory, check=True)
+        subprocess.run(["git","commit","-m","Update"], cwd=Directory, check=True)   
+    except subprocess.CalledProcessError as err:
+        Show_popup(f"Error commiting your changes from the repository {err}")
+        return {"message": f"Error commiting your changes from the repository {err}", "status": False}
+    try:
+
         # Intenta hacer pull de la rama 'main'
         subprocess.run(["git", "pull", "origin", "main"], cwd=Directory, check=True)
         return {"message": "Repository updated successfully", "status": True}
@@ -13,7 +22,7 @@ def UpdateRepo(Directory):
     except subprocess.CalledProcessError as err:
         # Si ocurre un error, muestra el mensaje y pregunta qué hacer
         print(f"Error updating Git repo: {err}")
-        
+
         # Mostrar los archivos con conflicto usando git status
         status_result = subprocess.run(["git", "status"], cwd=Directory, check=True, capture_output=True, text=True)
         conflicted_files = status_result.stdout
