@@ -1,5 +1,6 @@
 import subprocess
 from Alerts.AlertBox import Show_popup
+from Functions.CRUD.Repo.UpdateRepo import UpdateRepo
 
 def SaveChanges(Directory,Email,first):
     Directory=Directory.replace("\\","/")
@@ -16,46 +17,10 @@ def SaveChanges(Directory,Email,first):
         print(result.stdout.strip())
         return{"message":"Changes Succefully Saved","status":True,"output":result.stdout.strip()}
     
-    #Git Commit
-    StatusResult=RunCommand(["git","status","--porcelain"])
-    if not StatusResult["status"]:
-        Show_popup(StatusResult["message"])
+    UResult= UpdateRepo(Directory,first)
+    if not UResult["status"]:
+        Show_popup(UResult["message"])
         return
-    
-    ModifiedFile=StatusResult["output"].splitlines()
-    print(ModifiedFile)
-    if not ModifiedFile:
-        Show_popup("No Changes to commit")
-        return
-    
-    if not first:
-        PullResult=RunCommand(["git","pull","origin","main"])
-        if not PullResult["status"]:
-            Show_popup(PullResult["message"])
-            return
-    print('resultado:')
-    AddResult=RunCommand(["git","add","."])
-    print(AddResult)
-    if not AddResult["status"]:
-        Show_popup(AddResult["message"])
-        return
-    
-    fileList=[line[:3] for line in ModifiedFile]
-    print(fileList)
-    CommitResult=RunCommand(["git","commit","-m",f"Updated-Changes: {', '.join(fileList) if not first else 'First commit'}" ])
-    if not CommitResult["status"]:
-        Show_popup(CommitResult["message"])
-        return
-
-    EmailVerify=RunCommand(["git","config","--get","user.email"])
-    if EmailVerify["output"]=="":
-        EmailSet=RunCommand(["git","config","--global",Email])
-        if not EmailSet["status"]:
-            Show_popup(EmailSet["message"])
-            return     
-    print(EmailVerify)
-    
-
     
     PushResult=RunCommand(["git","push","origin","main"])
     if not PushResult["status"]:

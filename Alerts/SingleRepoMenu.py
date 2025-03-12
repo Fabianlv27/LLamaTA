@@ -49,7 +49,7 @@ def SingleRepoMenu(parent, RepoElement, UserData, Belong, Directory,Refresh):
     Update = ttk.Button(
         button_frame,
         image=IUp,
-        command=lambda: UpdateRepo(Directory)
+        command=lambda: UpdateRepo(Directory,False)
     )
     Update.image = IUp  # Evita recolección de basura
     Update.pack(side="left", padx=5)
