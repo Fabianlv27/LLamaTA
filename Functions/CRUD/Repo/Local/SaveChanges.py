@@ -18,8 +18,9 @@ def SaveChanges(Directory,Email,first):
         return{"message":"Changes Succefully Saved","status":True,"output":result.stdout.strip()}
     
     UResult= UpdateRepo(Directory,first)
+    print('buena')
     if not UResult["status"]:
-        Show_popup(UResult["message"])
+        print(UResult["message"])
         return
     
     PushResult=RunCommand(["git","push","origin","main"])

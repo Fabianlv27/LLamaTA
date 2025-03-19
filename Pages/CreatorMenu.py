@@ -7,6 +7,7 @@ from Functions.CRUD.Directory.CreateDirectory import CreateDirectory
 from Functions.CRUD.Directory.HandlerDirectory import OpenDirectory
 from Functions.CRUD.Repo.CreateRepo import CreateRepo
 from Data.GetUserData import GetUserInfo
+from Functions.CRUD.Repo.Github.GithubRepo import GithubRepo
 from Functions.CRUD.Repo.Local.InitLocalRepo import InitLocalRepo
 from Functions.CRUD.ReposDataFile.UpdateLReposData import UpdateLReposData
 from Functions.CRUD.ReposDataFile.UpdateRReposData import UpdateRReposData
@@ -30,7 +31,7 @@ class CreatorMenu(tk.Frame):
         label.pack(pady=20)
 
         self.SaveOption="Create a new directory"
-        options=["Create a new directory","Select a created directory"]
+        options=["Create a new directory","Select a created directory","GitHub Repository"]
         combo=ttk.Combobox(self,values=options,state="readonly")
         combo.set("Create a new directory")
         combo.pack(pady=10)
@@ -42,23 +43,27 @@ class CreatorMenu(tk.Frame):
         combo.bind("<<ComboboxSelected>>",OnSelect) 
                
         def DirectoryHandler():
-            if self.SaveOption=="Create a new directory":
-                CDData=CreateDirectory()
-                if CDData["status"]:
-                    Directory=CDData["path"]
-                    DName=CDData["name"]
-                else:
-                    Show_popup(CDData["message"])
+            match self.SaveOption:
+                case "GitHub Repository":
+                    GithubRepo(username=GetUserInfo()["UserName"],refresh=controller.Refresh()) 
                     return
-            else:
-                Directory=OpenDirectory()
-                DName=os.path.basename(Directory)
+                case "Create a new directory":
+                    CDData=CreateDirectory()
+                    if CDData["status"]:
+                        Directory=CDData["path"]
+                        DName=CDData["name"]
+                    else:
+                        Show_popup(CDData["message"])
+                        return
+                case "Select a created directory":
+                    Directory=OpenDirectory()
+                    DName=os.path.basename(Directory)           
                 
             Desciption=simpledialog.askstring("Description","Write a description (opcional)")
             CreateRepoData= CreateRepo(DName,Desciption if Desciption !=None else "")
             if CreateRepoData["status"]:
                InitLocalRepoRes= InitLocalRepo(Directory,DName)
-               if InitLocalRepoRes["status"]:
+               if InitLocalRepoRes["status"]:                                               
                    UpdateLReposDataResp=UpdateLReposData(DName,CreateRepoData["link"],Directory,GetUserInfo()["CodeMachineId"],"NoId")
                    print("Uploading")
                    UpdateRReposDataResp=UpdateRReposData(UpdateLReposDataResp["content"],GetUserInfo()["ReposDataLink"]) 
@@ -74,7 +79,7 @@ class CreatorMenu(tk.Frame):
         
         button = ttk.Button(
             self,
-            text="Open FileExplorer",
+            text="next",
             style="TButton",
             command=lambda: DirectoryHandler()
         )
