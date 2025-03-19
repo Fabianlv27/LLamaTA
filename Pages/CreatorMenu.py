@@ -45,7 +45,7 @@ class CreatorMenu(tk.Frame):
         def DirectoryHandler():
             match self.SaveOption:
                 case "GitHub Repository":
-                    GithubRepo(username=GetUserInfo()["UserName"],refresh=controller.Refresh()) 
+                    GithubRepo(username=GetUserInfo()["UserName"],refresh=controller.Refresh(),token=GetUserInfo()["Token"]) 
                     return
                 case "Create a new directory":
                     CDData=CreateDirectory()

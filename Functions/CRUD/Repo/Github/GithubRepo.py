@@ -4,18 +4,23 @@ from tkinter import messagebox
 import uuid
 
 from Data.GetUserData import GetReposInfo, ModifyReposInfo
+from Functions.Encript import Decifre
 
-def get_repos(username):
+def get_repos(username,token):
     url = f"https://api.github.com/users/{username}/repos"
-    response = requests.get(url)
+    token=Decifre(token)
+    headers = {
+        "Authorization": f"token {token}"
+    }
+    response = requests.get(url,headers=headers)
     if response.status_code == 200:
         return response.json()
     else:
         messagebox.showerror("Error", f"Failed to fetch repositories: {response.status_code}")
         return []
 
-def GithubRepo(username,refresh):
-    repos = get_repos(username)
+def GithubRepo(username,refresh,token):
+    repos = get_repos(username,token)
     if not repos:
         return
 
