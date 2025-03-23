@@ -1,5 +1,5 @@
 {
-    "Amount": 11,
+    "Amount": 10,
     "Repos": [
         {
             "Id": "245d9c40-474e-405d-939f-2d6f507773ac",
@@ -102,17 +102,6 @@
             ]
         },
         {
-            "Id": "5f3c0f23-1111-4f9a-8d90-431eb2b4fb19",
-            "Name": "MapAuto",
-            "Link": "https://github.com/Fabianlv27/MapAuto.git",
-            "Directories": [
-                {
-                    "IDMachine": "05b89fdb-9dcd-488f-abe2-f2e0b7ef4a30%%@_Windows/DESKTOP-Q5TD40F",
-                    "Directory": "C:/Users/CEEP/Desktop/MapAuto/MapAuto"
-                }
-            ]
-        },
-        {
             "Id": "c9acc888-7427-4eb0-beb0-bb88081afd48",
             "Name": "teest",
             "Link": "https://github.com/Fabianlv27/teest.git",
@@ -124,10 +113,15 @@
             ]
         },
         {
-            "Id": "ec19c6da-32bf-474b-bc92-c6f7cb900352",
-            "Name": "schedule",
-            "Link": "https://github.com/Fabianlv27/schedule",
-            "Directories": []
+            "Id": "af038643-0a42-4e9e-9815-c4a9b7442bc4",
+            "Name": "MapAuto",
+            "Link": "https://github.com/Fabianlv27/MapAuto.git",
+            "Directories": [
+                {
+                    "IDMachine": "05b89fdb-9dcd-488f-abe2-f2e0b7ef4a30%%@_Windows/DESKTOP-Q5TD40F",
+                    "Directory": "C:/Users/CEEP/Desktop/MapAuto"
+                }
+            ]
         }
     ]
 }

@@ -12,6 +12,7 @@ class ReposMenu(tk.Frame):
         self.Data=GetReposInfo()
         self.Element=Element
         self.Belong=self.isHere(self.Data["Repos"][Element],self.UserData)
+        self.Empty=self.isEmpty(self.Data["Repos"][Element])
         self.Directory=self.GetDirectory(Element)
         print(self.Belong)   
         
@@ -20,7 +21,7 @@ class ReposMenu(tk.Frame):
         
         User=ttk.Label(buttonContainer,text=self.Data["Repos"][Element]["Name"],font=("Arial",12),foreground="#00BFFF" if self.Belong else "grey",cursor="hand2")
         User.pack(side="left",padx=0)
-        User.bind("<Button-1>",lambda event:SingleRepoMenu(self,self.Data["Repos"][self.Element],self.UserData,self.Belong,self.Directory,self.controller.Refresh))
+        User.bind("<Button-1>",lambda event:SingleRepoMenu(self,self.Data["Repos"][self.Element],self.UserData,self.Belong,self.Directory,self.controller.Refresh,self.Empty))
 
     def GetDirectory(self,Element):
             for direc in self.Data["Repos"][Element]["Directories"]:
@@ -32,4 +33,7 @@ class ReposMenu(tk.Frame):
             if direc["IDMachine"]==UserData["CodeMachineId"]:
                 return True
         return False
-        
+    def isEmpty(self,Element):
+        if len(Element["Directories"])==0:
+            return True
+        return False     
